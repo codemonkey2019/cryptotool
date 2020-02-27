@@ -4,10 +4,7 @@ package com.liu.cryptotool.control;
 import com.liu.cryptotool.block.AEAlgorithm;
 import com.liu.cryptotool.block.SEAlgorithm;
 import com.liu.cryptotool.block.SigAlgorithm;
-import com.liu.cryptotool.utils.AEKeyPair;
-import com.liu.cryptotool.utils.BCECUtil;
-import com.liu.cryptotool.utils.MyUtils;
-import com.liu.cryptotool.utils.SM2Util;
+import com.liu.cryptotool.utils.*;
 import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
 import org.bouncycastle.crypto.params.ECPrivateKeyParameters;
 import org.bouncycastle.crypto.params.ECPublicKeyParameters;
@@ -35,7 +32,7 @@ public class OperateKey {
     }
 
     /**
-     * 获取对称密钥的字节编码
+     * 随机获取对称密钥的字节编码
      *
      * @param algo
      * @return
@@ -80,9 +77,9 @@ public class OperateKey {
     }
 
     /**
-     * 转化SM2的公钥
+     * 转化SM2的公钥，将字节数组形式的公钥转换为标准形式
      * @param publicKey
-     * @return
+     * @return BCECPublicKey
      */
     @NotNull
     public static BCECPublicKey toSM2PublicKey(byte[] publicKey){
@@ -104,9 +101,9 @@ public class OperateKey {
     }
 
     /**
-     * 转换SM2的私钥
+     * 转换SM2的私钥，将字节数组形式的私钥转换为标准形式
      * @param privateKey
-     * @return
+     * @return BCECPrivateKey
      */
     @NotNull
     public static BCECPrivateKey toSM2PrivateKey(byte[] privateKey){
@@ -126,7 +123,12 @@ public class OperateKey {
         return null;
     }
 
-    public static AEKeyPair getKeyPair(String algo){
+    /**
+     * 根据算法名字符串获取一个非对称加密算法的密钥对
+     * @param algo
+     * @return
+     */
+    private static AEKeyPair getKeyPair(String algo){
         if (algo.equals("SM2")){
             return getSM2Key();
         }
@@ -145,27 +147,68 @@ public class OperateKey {
         return null;
     }
 
-
-    public static AEKeyPair getKeyPair(AEAlgorithm algo) {
+    /**
+     * 根据算法名枚举获取一个非对称加密的密钥对
+     * @param algo
+     * @return
+     */
+    public static AEKeyPair getAEKeyPair(AEAlgorithm algo) {
         return getKeyPair(algo.toString());
     }
 
-    public static AEKeyPair getSigKeyPair(SigAlgorithm algo) {
-        return getKeyPair(MyUtils.fetch(algo));
+    /**
+     * 根据签名算法枚举值的名获取签名密钥对
+     * @param algo
+     * @return
+     */
+    public static SigKeyPair getSigKeyPair(SigAlgorithm algo) {
+        AEKeyPair keyPair = getKeyPair(MyUtils.fetch(algo));
+        return new SigKeyPair(keyPair.getPrivateKey(),keyPair.getPublicKey());
     }
 
-
+    /**
+     * 转换除SM2外其他算法的公钥位标准形式
+     * @param algo 算法名
+     * @param pub 公钥字节数组
+     * @return PublicKey
+     */
     @NotNull
-    public static PublicKey toPublicKey(AEAlgorithm algo,byte[] pub) {
+    public static PublicKey toAEPublicKey(AEAlgorithm algo,byte[] pub) {
         return toPublicKey(algo.toString(), pub);
     }
-
+    /**
+     * 转换除SM2外其他算法的私钥位标准形式
+     * @param algo 算法名
+     * @param pri 私钥字节数组
+     * @return PublicKey
+     */
     @NotNull
-    public static PrivateKey toPrivateKey(AEAlgorithm algo, byte[] pri) {
+    public static PrivateKey toAEPrivateKey(AEAlgorithm algo, byte[] pri) {
         return toPrivateKey(algo.toString(), pri);
     }
+    /**
+     * 转换签名算法的公钥为标准形式
+     * @param algo 算法名
+     * @param pub 公钥字节数组
+     * @return PublicKey
+     */
     @NotNull
-    public static PublicKey toPublicKey(String algo,byte[] pub) {
+    public static PublicKey toSigPublicKey(SigAlgorithm algo,byte[] pub) {
+        return toPublicKey(MyUtils.fetch(algo), pub);
+    }
+    /**
+     * 转换签名算法的私钥为标准形式
+     * @param algo 算法名
+     * @param pri 私钥字节数组
+     * @return PublicKey
+     */
+    @NotNull
+    public static PrivateKey toSigPrivateKey(SigAlgorithm algo, byte[] pri) {
+        return toPrivateKey(MyUtils.fetch(algo), pri);
+    }
+
+    @NotNull
+    private static PublicKey toPublicKey(String algo,byte[] pub) {
         try {
             X509EncodedKeySpec keySpec = new X509EncodedKeySpec(pub);
             KeyFactory factory = KeyFactory.getInstance(algo);
@@ -180,7 +223,7 @@ public class OperateKey {
     }
 
     @NotNull
-    public static PrivateKey toPrivateKey(String algo, byte[] pri) {
+    private static PrivateKey toPrivateKey(String algo, byte[] pri) {
         try {
             PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(pri);
             KeyFactory factory = KeyFactory.getInstance(algo);

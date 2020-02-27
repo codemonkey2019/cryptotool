@@ -6,6 +6,7 @@ import com.liu.cryptotool.control.OperateKey;
 import com.liu.cryptotool.control.SignatureFactory;
 import com.liu.cryptotool.signature.MySignature;
 import com.liu.cryptotool.utils.AEKeyPair;
+import com.liu.cryptotool.utils.SigKeyPair;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -17,7 +18,7 @@ import org.junit.Test;
 public class TestSig {
     @Test
     public void testSigDSA(){
-        AEKeyPair keyPair = OperateKey.getSigKeyPair(SigAlgorithm.SHA1WITHDSA);
+        SigKeyPair keyPair = OperateKey.getSigKeyPair(SigAlgorithm.SHA1WITHDSA);
         MySignature signature = SignatureFactory.getSignature(SigAlgorithm.SHA1WITHDSA, keyPair.getPrivateKey(), keyPair.getPublicKey());
         byte[] data = "hello word".getBytes();
         byte[] sign = signature.sign(data);
@@ -25,7 +26,7 @@ public class TestSig {
     }
     @Test
     public void testSigRSA(){
-        AEKeyPair keyPair = OperateKey.getSigKeyPair(SigAlgorithm.SHA256WITHRSA);
+        SigKeyPair keyPair = OperateKey.getSigKeyPair(SigAlgorithm.SHA256WITHRSA);
         MySignature signature = SignatureFactory.getSignature(SigAlgorithm.SHA256WITHRSA, keyPair.getPrivateKey(), keyPair.getPublicKey());
         byte[] data = "hello word".getBytes();
         byte[] sign = signature.sign(data);
@@ -33,7 +34,7 @@ public class TestSig {
     }
     @Test
     public void testSigSM2(){
-        AEKeyPair keyPair = OperateKey.getSigKeyPair(SigAlgorithm.NONEWITHSM2);
+        SigKeyPair keyPair = OperateKey.getSigKeyPair(SigAlgorithm.NONEWITHSM2);
         MySignature signature = SignatureFactory.getSignature(SigAlgorithm.NONEWITHSM2, keyPair.getPrivateKey(), keyPair.getPublicKey());
         byte[] data = "hello word".getBytes();
         byte[] sign = signature.sign(data);

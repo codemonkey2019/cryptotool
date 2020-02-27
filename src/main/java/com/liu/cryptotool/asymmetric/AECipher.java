@@ -19,8 +19,8 @@ public class AECipher implements MyCipher {
 
     public AECipher(AEAlgorithm algo, byte[] privateKey, byte[] publicKey){
         this.algorithm = algo;
-        this.privateKey= OperateKey.toPrivateKey(algo,privateKey);
-        this.publicKey=OperateKey.toPublicKey(algo,publicKey);
+        this.privateKey= OperateKey.toAEPrivateKey(algo,privateKey);
+        this.publicKey=OperateKey.toAEPublicKey(algo,publicKey);
         try {
             this.cipher=javax.crypto.Cipher.getInstance(algorithm.toString(),"BC");
         } catch (NoSuchAlgorithmException e) {

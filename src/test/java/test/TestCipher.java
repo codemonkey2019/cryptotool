@@ -44,7 +44,7 @@ public class TestCipher {
 
     @Test
     public void testRSA(){
-        AEKeyPair key = OperateKey.getKeyPair(AEAlgorithm.RSA);
+        AEKeyPair key = OperateKey.getAEKeyPair(AEAlgorithm.RSA);
         MyCipher cipher = CipherFactory.getAECipher(AEAlgorithm.RSA,key.getPrivateKey(),key.getPublicKey());
         String data = "hello word";
         byte[] en_data = cipher.encrypt(data.getBytes());
@@ -54,7 +54,7 @@ public class TestCipher {
     }
     @Test
     public void testELGAMAL(){
-        AEKeyPair key = OperateKey.getKeyPair(AEAlgorithm.ELGAMAL);
+        AEKeyPair key = OperateKey.getAEKeyPair(AEAlgorithm.ELGAMAL);
         MyCipher cipher = CipherFactory.getAECipher(AEAlgorithm.ELGAMAL,key.getPrivateKey(),key.getPublicKey());
         String data = "hello word";
         byte[] en_data = cipher.encrypt(data.getBytes());
@@ -64,7 +64,7 @@ public class TestCipher {
     }
     @Test
     public void testSM2(){
-        AEKeyPair key = OperateKey.getKeyPair(AEAlgorithm.SM2);
+        AEKeyPair key = OperateKey.getAEKeyPair(AEAlgorithm.SM2);
         MyCipher cipher = CipherFactory.getAECipher(AEAlgorithm.SM2,key.getPrivateKey(),key.getPublicKey());
         String data = "hello word";
         byte[] en_data = cipher.encrypt(data.getBytes());

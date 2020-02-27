@@ -24,8 +24,8 @@ public class SignatureImpl implements MySignature {
     public SignatureImpl(SigAlgorithm algorithm, byte[] publicKey, byte[] privateKey) {
         this.algorithm = algorithm;
 
-        this.publicKey = OperateKey.toPublicKey(MyUtils.fetch(algorithm), publicKey);
-        this.privateKey = OperateKey.toPrivateKey(MyUtils.fetch(algorithm), privateKey);
+        this.publicKey = OperateKey.toSigPublicKey(algorithm, publicKey);
+        this.privateKey = OperateKey.toSigPrivateKey(algorithm, privateKey);
         try {
             this.signature= java.security.Signature.getInstance(algorithm.toString());
         } catch (NoSuchAlgorithmException e) {
