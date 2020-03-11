@@ -1,8 +1,7 @@
 package com.liu.cryptotool.block;
 
 /**
- * Portion of com.liu.cryptotools.block cipher mode of operation.
- * For more modes, see <a href="https://www.bouncycastle.org/specifications.html">bouncycastle.org</a>
+ * 对称加密支持的工作模式的枚举
  */
 public enum Pattern {
     ECB("ECB"),

@@ -1,8 +1,7 @@
 package com.liu.cryptotool.signature;
 
-import com.liu.cryptotool.block.SigAlgorithm;
-import com.liu.cryptotool.control.OperateKey;
-import com.liu.cryptotool.utils.MyUtils;
+import com.liu.cryptotool.block.SIG;
+import com.liu.cryptotool.utils.OperateKey;
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 
@@ -14,14 +13,14 @@ import java.security.*;
  * @desc
  **/
 public class SignatureImpl implements MySignature {
-    private SigAlgorithm algorithm;
+    private SIG algorithm;
     private java.security.Signature signature;
     @Getter
     private PublicKey publicKey;
     @Getter
     private PrivateKey privateKey;
 
-    public SignatureImpl(SigAlgorithm algorithm, byte[] publicKey, byte[] privateKey) {
+    public SignatureImpl(SIG algorithm, byte[] publicKey, byte[] privateKey) {
         this.algorithm = algorithm;
 
         this.publicKey = OperateKey.toSigPublicKey(algorithm, publicKey);
