@@ -1,8 +1,7 @@
 package com.liu.cryptotool.block;
 
 /**
- * Portion of com.liu.cryptotools.block cipher padding scheme.
- * For more padding scheme, see <a href="https://www.bouncycastle.org/specifications.html">bouncycastle.org</a>
+ * 堆对称加密支持的填充模式的枚举
  */
 public enum Padding {
     NoPadding("NoPadding"),

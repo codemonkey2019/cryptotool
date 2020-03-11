@@ -1,9 +1,9 @@
 package com.liu.cryptotool.digests;
 
 public interface MyDigest {
-    byte[] getHash(byte[] data);
+    byte[] getDig(byte[] data);
 
-    String getHash(String data);
+    String getDig(String data);
 
-    byte[] getHashFromFile(String path);
+    byte[] getDigOfFile(String path);
 }

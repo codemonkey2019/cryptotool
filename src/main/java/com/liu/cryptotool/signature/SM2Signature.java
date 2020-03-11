@@ -1,6 +1,6 @@
 package com.liu.cryptotool.signature;
 
-import com.liu.cryptotool.control.OperateKey;
+import com.liu.cryptotool.utils.OperateKey;
 import com.liu.cryptotool.utils.SM2Util;
 import lombok.Getter;
 import org.bouncycastle.crypto.CryptoException;

@@ -2,8 +2,8 @@ package com.liu.cryptotool.utils;
 
 import com.liu.cryptotool.block.Padding;
 import com.liu.cryptotool.block.Pattern;
-import com.liu.cryptotool.block.SEAlgorithm;
-import com.liu.cryptotool.block.SigAlgorithm;
+import com.liu.cryptotool.block.SE;
+import com.liu.cryptotool.block.SIG;
 
 public class MyUtils {
     /**
@@ -13,7 +13,7 @@ public class MyUtils {
      * @param padding
      * @return
      */
-    public static String prase(SEAlgorithm algorithm,
+    public static String prase(SE algorithm,
                                Pattern mode,
                                Padding padding){
         return algorithm.toString()+"/"
@@ -21,7 +21,13 @@ public class MyUtils {
                 +padding.toString();
 
     }
-     public static String fetch(SigAlgorithm sigAlgorithm){
+
+    /**
+     * 解析签名枚举得到签名算法
+     * @param sigAlgorithm
+     * @return
+     */
+     public static String fetch(SIG sigAlgorithm){
         if (sigAlgorithm.toString().indexOf("RSA")!=-1){
             return "RSA";
         }else if (sigAlgorithm.toString().indexOf("DSA")!=-1){
