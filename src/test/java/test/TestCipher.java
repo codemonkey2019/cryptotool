@@ -7,12 +7,26 @@ import com.liu.cryptotool.block.Pattern;
 import com.liu.cryptotool.block.SE;
 import com.liu.cryptotool.cipher.MyCipher;
 import com.liu.cryptotool.cipher.CipherFactory;
+import com.liu.cryptotool.utils.MyUtils;
 import com.liu.cryptotool.utils.OperateKey;
 import com.liu.cryptotool.utils.AEKeyPair;
 import org.junit.Assert;
 import org.junit.Test;
 
 public class TestCipher {
+    @Test
+    public void test0x(){
+        byte[] key = OperateKey.getSecretKey(SE.SM4);
+        MyCipher cipher = CipherFactory.getSECipher(SE.SM4, Pattern.CBC, Padding.PKCS5,key);
+        String data = "hello word";
+        byte[] en_data = cipher.encrypt(data.getBytes());
+
+        String hex = MyUtils.binaryToHexString(en_data);
+
+        byte[] de_data = cipher.decrypt(MyUtils.hexStringToBinary(hex));
+
+        Assert.assertFalse(!"hello word".equals(new String(de_data)));
+    }
 
     @Test
     public void testSM4() throws Exception {
