@@ -38,15 +38,15 @@ public class TestCipher {
         Assert.assertFalse(!"hello word".equals(new String(de_data)));
     }
 
-    @Test
-    public void testAESFile() throws Exception {
-        byte[] key = KeyUtils.getSecretKey(SE.AES);
-        MyCipher cipher = MyCipherFactory.getSECipher(SE.AES, Pattern.CBC, Padding.PKCS5,key);
-        String inPath = "src/test/resources/OXT.xlsx";
-        String outPath = "src/test/resources/11.txt";
-        cipher.encrypt(inPath,outPath);
-        cipher.decrypt(outPath,"src/test/resources/2.xlsx");
-    }
+//    @Test
+//    public void testAESFile() throws Exception {
+//        byte[] key = KeyUtils.getSecretKey(SE.AES);
+//        MyCipher cipher = MyCipherFactory.getSECipher(SE.AES, Pattern.CBC, Padding.PKCS5,key);
+//        String inPath = "src/test/resources/OXT.xlsx";
+//        String outPath = "src/test/resources/11.txt";
+//        cipher.encrypt(inPath,outPath);
+//        cipher.decrypt(outPath,"src/test/resources/2.xlsx");
+//    }
 
     @Test
     public void testAES() throws Exception {
