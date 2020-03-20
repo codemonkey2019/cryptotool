@@ -3,7 +3,7 @@ package com.cryptotool.cipher.symmetric;
 import com.cryptotool.block.Padding;
 import com.cryptotool.block.Pattern;
 import com.cryptotool.block.SE;
-import com.cryptotool.util.OperateKey;
+import com.cryptotool.util.KeyUtils;
 import com.cryptotool.util.MyUtils;
 import lombok.Getter;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
@@ -40,7 +40,7 @@ public class CipherNoIv implements MyCipher {
         this.mode = mode;
         this.padding = padding;
 
-        this.key= OperateKey.toSecretKey(algorithm,key);
+        this.key= KeyUtils.toSecretKey(algorithm,key);
         this.cipher = Cipher.getInstance(MyUtils.prase(algorithm, mode, padding));
     }
 

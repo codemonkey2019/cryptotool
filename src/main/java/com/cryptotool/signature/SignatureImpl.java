@@ -1,7 +1,7 @@
 package com.cryptotool.signature;
 
 import com.cryptotool.block.SIG;
-import com.cryptotool.util.OperateKey;
+import com.cryptotool.util.KeyUtils;
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 
@@ -23,8 +23,8 @@ public class SignatureImpl implements MySignature {
     public SignatureImpl(SIG algorithm, byte[] publicKey, byte[] privateKey) {
         this.algorithm = algorithm;
 
-        this.publicKey = OperateKey.toSigPublicKey(algorithm, publicKey);
-        this.privateKey = OperateKey.toSigPrivateKey(algorithm, privateKey);
+        this.publicKey = KeyUtils.toSigPublicKey(algorithm, publicKey);
+        this.privateKey = KeyUtils.toSigPrivateKey(algorithm, privateKey);
         try {
             this.signature= java.security.Signature.getInstance(algorithm.toString());
         } catch (NoSuchAlgorithmException e) {

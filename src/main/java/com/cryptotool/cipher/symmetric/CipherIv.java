@@ -5,7 +5,7 @@ import com.cryptotool.block.Padding;
 import com.cryptotool.block.Pattern;
 import com.cryptotool.block.SE;
 import com.cryptotool.cipher.MyCipher;
-import com.cryptotool.util.OperateKey;
+import com.cryptotool.util.KeyUtils;
 import com.cryptotool.util.MyUtils;
 import lombok.Getter;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
@@ -44,7 +44,7 @@ public class CipherIv implements MyCipher {
         this.algorithm = algorithm;
         this.mode = mode;
         this.padding = padding;
-        this.key= OperateKey.toSecretKey(algorithm,key);
+        this.key= KeyUtils.toSecretKey(algorithm,key);
         this.cipherForIv = javax.crypto.Cipher.getInstance(MyUtils.prase(algorithm, mode, padding));
         this.cipherForNoIv = javax.crypto.Cipher.getInstance(MyUtils.prase(algorithm, Pattern.ECB, Padding.NoPadding));
     }

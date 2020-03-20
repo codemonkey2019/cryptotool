@@ -25,7 +25,7 @@ import java.security.spec.X509EncodedKeySpec;
  * @date 2019-09-20 21:37
  * @desc
  **/
-public class OperateKey {
+public class KeyUtils {
     static {
         Security.addProvider(new BouncyCastleProvider());
     }

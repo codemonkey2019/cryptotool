@@ -1,7 +1,7 @@
 package com.cryptotool.cipher.asymmetric;
 
 import com.cryptotool.cipher.MyCipher;
-import com.cryptotool.util.OperateKey;
+import com.cryptotool.util.KeyUtils;
 import com.cryptotool.util.SM2Util;
 import lombok.Getter;
 import org.bouncycastle.crypto.InvalidCipherTextException;
@@ -18,8 +18,8 @@ public class SM2Cipher implements MyCipher {
     private BCECPrivateKey privateKey;
 
     public SM2Cipher(byte[] privateKey, byte[] publicKey){
-        this.privateKey= OperateKey.toSM2PrivateKey(privateKey);
-        this.publicKey=OperateKey.toSM2PublicKey(publicKey);
+        this.privateKey= KeyUtils.toSM2PrivateKey(privateKey);
+        this.publicKey= KeyUtils.toSM2PublicKey(publicKey);
     }
 
     @Override

@@ -3,7 +3,7 @@ package com.cryptotool.cipher.asymmetric;
 
 import com.cryptotool.block.AE;
 import com.cryptotool.cipher.MyCipher;
-import com.cryptotool.util.OperateKey;
+import com.cryptotool.util.KeyUtils;
 import lombok.Getter;
 
 import javax.crypto.Cipher;
@@ -23,8 +23,8 @@ public class AECipher implements MyCipher {
 
     public AECipher(AE algo, byte[] privateKey, byte[] publicKey) throws Exception {
         this.algorithm = algo;
-        this.privateKey= OperateKey.toAEPrivateKey(algo,privateKey);
-        this.publicKey=OperateKey.toAEPublicKey(algo,publicKey);
+        this.privateKey= KeyUtils.toAEPrivateKey(algo,privateKey);
+        this.publicKey= KeyUtils.toAEPublicKey(algo,publicKey);
         this.cipher=javax.crypto.Cipher.getInstance(algorithm.toString(),"BC");
     }
     @Override

@@ -13,8 +13,8 @@ import org.jetbrains.annotations.NotNull;
 /**
  * 获得MyCipher接口实现类对象的工厂类，根据传入的参数自动返回对应的MyCipher实现类
  */
-public class CipherFactory {
-    private CipherFactory() {
+public class MyCipherFactory {
+    private MyCipherFactory() {
     }
 
     /**

@@ -1,6 +1,6 @@
 package com.cryptotool.signature;
 
-import com.cryptotool.util.OperateKey;
+import com.cryptotool.util.KeyUtils;
 import com.cryptotool.util.SM2Util;
 import lombok.Getter;
 import org.bouncycastle.crypto.CryptoException;
@@ -23,8 +23,8 @@ public class SM2Signature implements MySignature {
     private BCECPrivateKey privateKey;
 
     public SM2Signature(byte[] publicKey, byte[] privateKey) {
-        this.publicKey = OperateKey.toSM2PublicKey(publicKey);
-        this.privateKey = OperateKey.toSM2PrivateKey(privateKey);
+        this.publicKey = KeyUtils.toSM2PublicKey(publicKey);
+        this.privateKey = KeyUtils.toSM2PrivateKey(privateKey);
     }
     @NotNull
     @Override
