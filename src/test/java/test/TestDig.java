@@ -1,8 +1,8 @@
 package test;
 
-import com.liu.cryptotool.block.DIG;
-import com.liu.cryptotool.digests.DigestFactory;
-import com.liu.cryptotool.digests.MyDigest;
+import com.cryptotool.block.DIG;
+import com.cryptotool.digests.DigestFactory;
+import com.cryptotool.digests.MyDigest;
 import org.junit.Assert;
 import org.junit.Test;
 

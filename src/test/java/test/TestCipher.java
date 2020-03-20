@@ -1,15 +1,15 @@
 package test;
 
 
-import com.liu.cryptotool.block.AE;
-import com.liu.cryptotool.block.Padding;
-import com.liu.cryptotool.block.Pattern;
-import com.liu.cryptotool.block.SE;
-import com.liu.cryptotool.cipher.MyCipher;
-import com.liu.cryptotool.cipher.CipherFactory;
-import com.liu.cryptotool.utils.MyUtils;
-import com.liu.cryptotool.utils.OperateKey;
-import com.liu.cryptotool.utils.AEKeyPair;
+import com.cryptotool.block.AE;
+import com.cryptotool.block.Padding;
+import com.cryptotool.block.Pattern;
+import com.cryptotool.block.SE;
+import com.cryptotool.cipher.MyCipher;
+import com.cryptotool.cipher.CipherFactory;
+import com.cryptotool.util.MyUtils;
+import com.cryptotool.util.OperateKey;
+import com.cryptotool.util.AEKeyPair;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -37,6 +37,17 @@ public class TestCipher {
         byte[] de_data = cipher.decrypt(en_data);
         Assert.assertFalse(!"hello word".equals(new String(de_data)));
     }
+
+    @Test
+    public void testAESFile() throws Exception {
+        byte[] key = OperateKey.getSecretKey(SE.AES);
+        MyCipher cipher = CipherFactory.getSECipher(SE.AES, Pattern.CBC, Padding.PKCS5,key);
+        String inPath = "src/test/resources/OXT.xlsx";
+        String outPath = "src/test/resources/11.txt";
+        cipher.encrypt(inPath,outPath);
+        cipher.decrypt(outPath,"src/test/resources/2.xlsx");
+    }
+
     @Test
     public void testAES() throws Exception {
         byte[] key = OperateKey.getSecretKey(SE.AES);
@@ -66,6 +77,7 @@ public class TestCipher {
         Assert.assertFalse(!"hello word".equals(new String(de_data)));
 
     }
+
     @Test
     public void testELGAMAL(){
         AEKeyPair key = OperateKey.getAEKeyPair(AE.ELGAMAL);

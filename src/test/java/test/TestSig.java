@@ -1,11 +1,11 @@
 package test;
 
 
-import com.liu.cryptotool.block.SIG;
-import com.liu.cryptotool.utils.OperateKey;
-import com.liu.cryptotool.signature.SignatureFactory;
-import com.liu.cryptotool.signature.MySignature;
-import com.liu.cryptotool.utils.SigKeyPair;
+import com.cryptotool.block.SIG;
+import com.cryptotool.util.OperateKey;
+import com.cryptotool.signature.SignatureFactory;
+import com.cryptotool.signature.MySignature;
+import com.cryptotool.util.SigKeyPair;
 import org.junit.Assert;
 import org.junit.Test;
 
