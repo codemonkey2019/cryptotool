@@ -39,7 +39,6 @@ public class MyCipherFactory {
             e.printStackTrace();
         }
         return null;
-
     }
 
     public static MyCipher getAECipher(AE aeAlgorithm, byte[] privateKey, byte[] publicKey) {
