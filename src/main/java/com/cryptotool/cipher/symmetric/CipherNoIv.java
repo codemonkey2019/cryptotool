@@ -3,13 +3,12 @@ package com.cryptotool.cipher.symmetric;
 import com.cryptotool.block.Padding;
 import com.cryptotool.block.Pattern;
 import com.cryptotool.block.SE;
+import com.cryptotool.cipher.MyCipher;
 import com.cryptotool.util.KeyUtils;
 import com.cryptotool.util.MyUtils;
 import lombok.Getter;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.jetbrains.annotations.NotNull;
-
-import com.cryptotool.cipher.MyCipher;
 
 import javax.crypto.Cipher;
 import javax.crypto.CipherInputStream;
@@ -53,7 +52,7 @@ public class CipherNoIv implements MyCipher {
      */
     @Override
     @NotNull
-    public byte[] encrypt(@NotNull byte[] data) {
+    public byte[] encryptFile(@NotNull byte[] data) {
         try {
             this.cipher.init(1,key);
             byte[] out = this.cipher.doFinal(data);
@@ -73,7 +72,7 @@ public class CipherNoIv implements MyCipher {
      */
     @Override
     @NotNull
-    public byte[] decrypt(@NotNull byte[] data){
+    public byte[] decryptFile(@NotNull byte[] data){
         try {
             this.cipher.init(2,key);
             byte[] out = this.cipher.doFinal(data);
@@ -91,7 +90,7 @@ public class CipherNoIv implements MyCipher {
      * @throws Exception
      */
     @Override
-    public void encrypt(@NotNull String inPath, @NotNull String outPath) {
+    public void encryptFile(@NotNull String inPath, @NotNull String outPath) {
         File file = new File(inPath);
         if (file.exists()){
             try {
@@ -126,7 +125,7 @@ public class CipherNoIv implements MyCipher {
      * @throws Exception
      */
     @Override
-    public void decrypt(@NotNull String inPath, @NotNull String outPath) {
+    public void decryptFile(@NotNull String inPath, @NotNull String outPath) {
         File file = new File(inPath);
         if (file.exists()){
             try {

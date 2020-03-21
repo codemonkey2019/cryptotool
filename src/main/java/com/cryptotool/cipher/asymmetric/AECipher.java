@@ -28,7 +28,7 @@ public class AECipher implements MyCipher {
         this.cipher=javax.crypto.Cipher.getInstance(algorithm.toString(),"BC");
     }
     @Override
-    public byte[] encrypt(byte[] data) {
+    public byte[] encryptFile(byte[] data) {
         if (publicKey == null) {
             throw new RuntimeException("公钥为空");
         }
@@ -42,7 +42,7 @@ public class AECipher implements MyCipher {
     }
 
     @Override
-    public byte[] decrypt(byte[] data){
+    public byte[] decryptFile(byte[] data){
         if (privateKey == null) {
             throw new RuntimeException("私钥为空");
         }
@@ -56,12 +56,12 @@ public class AECipher implements MyCipher {
     }
 
     @Override
-    public void encrypt(String inPath, String outPath) {
+    public void encryptFile(String inPath, String outPath) {
         throw new RuntimeException("不支持使用公钥加密算法进行文件加解密");
     }
 
     @Override
-    public void decrypt(String inPath, String outPath){
+    public void decryptFile(String inPath, String outPath){
         throw new RuntimeException("不支持使用公钥加密算法进行文件加解密");
     }
 }

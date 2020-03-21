@@ -1,4 +1,4 @@
-package com.cryptotool.util;
+package com.cryptotool.signature;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

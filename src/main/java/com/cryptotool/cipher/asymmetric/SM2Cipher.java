@@ -23,7 +23,7 @@ public class SM2Cipher implements MyCipher {
     }
 
     @Override
-    public byte[] encrypt(byte[] data){
+    public byte[] encryptFile(byte[] data){
         if (publicKey == null) {
             throw new RuntimeException("公钥为空");
         }
@@ -38,7 +38,7 @@ public class SM2Cipher implements MyCipher {
     }
 
     @Override
-    public byte[] decrypt(byte[] data){
+    public byte[] decryptFile(byte[] data){
         if (privateKey == null) {
             throw new RuntimeException("私钥为空");
         }
@@ -53,13 +53,13 @@ public class SM2Cipher implements MyCipher {
     }
     @Deprecated
     @Override
-    public void encrypt(String inPath, String outPath) {
+    public void encryptFile(String inPath, String outPath) {
         throw new RuntimeException("公钥不支持文件加解密");
     }
 
     @Deprecated
     @Override
-    public void decrypt(String inPath, String outPath){
+    public void decryptFile(String inPath, String outPath){
         throw new RuntimeException("公钥不支持文件加解密");
     }
 }

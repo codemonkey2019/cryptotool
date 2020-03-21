@@ -1,9 +1,9 @@
 package com.cryptotool.digests;
 
 public interface MyDigest {
-    byte[] getDig(byte[] data);
+    byte[] getDigest(byte[] data);
 
-    String getDig(String data);
+    String getDigest(String data);
 
-    byte[] getDigOfFile(String path);
+    byte[] getDigestOfFile(String path);
 }

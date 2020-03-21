@@ -5,7 +5,7 @@ import com.cryptotool.block.SIG;
 import com.cryptotool.util.KeyUtils;
 import com.cryptotool.signature.SignatureFactory;
 import com.cryptotool.signature.MySignature;
-import com.cryptotool.util.SigKeyPair;
+import com.cryptotool.signature.SigKeyPair;
 import org.junit.Assert;
 import org.junit.Test;
 

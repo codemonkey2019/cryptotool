@@ -12,7 +12,7 @@ public interface MyCipher {
      * @return 密文数据
      * @throws Exception
      */
-    byte[] encrypt(byte[] data);
+    byte[] encryptFile(byte[] data);
 
     /**
      * 解密算法
@@ -21,7 +21,7 @@ public interface MyCipher {
      * @return 密文数据
      * @throws Exception
      */
-    byte[] decrypt(byte[] data);
+    byte[] decryptFile(byte[] data);
 
     /**
      * 文件加密
@@ -30,7 +30,7 @@ public interface MyCipher {
      * @param outPath
      * @throws Exception
      */
-    void encrypt(String inPath, String outPath);
+    void encryptFile(String inPath, String outPath);
 
     /**
      * 文件解密
@@ -39,5 +39,5 @@ public interface MyCipher {
      * @param outPath
      * @throws Exception
      */
-    void decrypt(String inPath, String outPath);
+    void decryptFile(String inPath, String outPath);
 }

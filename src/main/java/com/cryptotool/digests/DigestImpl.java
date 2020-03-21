@@ -30,17 +30,17 @@ public class DigestImpl implements MyDigest {
         Security.addProvider(new BouncyCastleProvider());
     }
     @Override
-    public byte[] getDig(byte[] data) {
+    public byte[] getDigest(byte[] data) {
         return md.digest(data);
     }
 
     @Override
-    public String getDig(String data) {
-        return Base64.getEncoder().encodeToString(getDig(data.getBytes()));
+    public String getDigest(String data) {
+        return Base64.getEncoder().encodeToString(getDigest(data.getBytes()));
     }
     @NotNull
     @Override
-    public byte[] getDigOfFile(String path) {
+    public byte[] getDigestOfFile(String path) {
         try {
             FileInputStream fis = new FileInputStream(path);
             DigestInputStream dis = new DigestInputStream(fis,md);

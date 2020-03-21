@@ -1,4 +1,4 @@
-package com.cryptotool.util;
+package com.cryptotool.cipher.asymmetric;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

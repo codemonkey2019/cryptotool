@@ -4,6 +4,8 @@ package com.cryptotool.util;
 import com.cryptotool.block.AE;
 import com.cryptotool.block.SE;
 import com.cryptotool.block.SIG;
+import com.cryptotool.cipher.asymmetric.AEKeyPair;
+import com.cryptotool.signature.SigKeyPair;
 import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
 import org.bouncycastle.crypto.params.ECPrivateKeyParameters;
 import org.bouncycastle.crypto.params.ECPublicKeyParameters;

@@ -1,4 +1,4 @@
-package com.cryptotool.util;
+package com.cryptotool.cipher.symmetric;
 
 public class SM2Cipher {
     /**
