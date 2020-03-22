@@ -79,3 +79,37 @@ String hex = HexUtils.binaryToHexString(data);
 byte[] dData = HexUtils.hexStringToBinary(hex);
 ```
 
+## 1.7 JPBC包的常用类封装
+
+使用：
+
+1. 获取一个Pairing对像
+
+   ```java
+   Pairing pairing = PairingAUtils.getPairing();
+   ```
+
+2. 可以直接获取域对象：G1、G2、Zr
+
+   ```java 
+   Field G1 = PairingAUtils.getG1();
+   Field G2 = PairingAUtils.getG2();
+   Field Z = PairingAUtils.getZr();
+   ```
+
+3. 直接获取对应域的随机元素
+
+   ```java
+   Element g = PairingAUtils.getRandomElementOfG1();
+   Element g1 = PairingAUtils.getRandomElementOfG1();
+   ```
+
+4. 直接对两个域元素做pairing运算
+
+   ```java
+   Element g = PairingAUtils.getRandomElementOfG1();
+   Element g1 = PairingAUtils.getRandomElementOfG1();
+   Element e = PairingAUtils.doPairing(g,g1);
+   ```
+
+   

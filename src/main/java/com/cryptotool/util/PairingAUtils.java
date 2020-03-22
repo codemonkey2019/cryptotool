@@ -11,12 +11,24 @@ public class PairingAUtils {
     public static Element getRandomElementOfG1(){
         return getG1().newRandomElement();
     }
+
+    public static Element getOneElementOfG1(){
+        return getG1().newOneElement();
+    }
+
     public static Element getRandomElementOfG2(){
         return getG2().newRandomElement();
     }
 
+    public static Element getOneElementOfG2(){
+        return getG2().newOneElement();
+    }
     public static Element getRandomElementOfZr(){
         return getZr().newRandomElement();
+    }
+
+    public static Element getOneElementOfZr(){
+        return getZr().newOneElement();
     }
 
     public static Field getG1() {
