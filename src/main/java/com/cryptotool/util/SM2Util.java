@@ -1,6 +1,5 @@
 package com.cryptotool.util;
 
-import com.cryptotool.cipher.symmetric.SM2Cipher;
 import org.bouncycastle.asn1.*;
 import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
 import org.bouncycastle.crypto.CipherParameters;

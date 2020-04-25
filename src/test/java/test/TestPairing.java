@@ -32,4 +32,11 @@ public class TestPairing {
         Element e = PairingAUtils.doPairing(g,g1);
         Assert.assertTrue(true);
     }
+    @Test
+    public void testElementLength(){
+        Element g = PairingAUtils.getRandomElementOfG1();
+        byte[] bytes = g.toBytes();
+        System.out.println(bytes.length*8);
+        System.out.println(g.getLengthInBytes()*8);
+    }
 }

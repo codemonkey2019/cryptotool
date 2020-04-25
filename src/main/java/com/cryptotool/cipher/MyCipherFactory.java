@@ -1,7 +1,7 @@
 package com.cryptotool.cipher;
 
 import com.cryptotool.cipher.asymmetric.AECipher;
-import com.cryptotool.cipher.asymmetric.SM2Cipher;
+import com.cryptotool.cipher.asymmetric.SM2;
 import com.cryptotool.block.AE;
 import com.cryptotool.block.Padding;
 import com.cryptotool.block.Pattern;
@@ -44,7 +44,7 @@ public class MyCipherFactory {
     public static MyCipher getAECipher(AE aeAlgorithm, byte[] privateKey, byte[] publicKey) {
 
         if (aeAlgorithm == AE.SM2) {
-            return new SM2Cipher(privateKey, publicKey);
+            return new SM2(privateKey, publicKey);
         } else {
             MyCipher cipher = null;
             try {

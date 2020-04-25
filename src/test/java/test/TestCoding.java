@@ -1,7 +1,7 @@
 package test;
 
 import com.cryptotool.util.HexUtils;
-import com.cryptotool.util.MyBase64;
+import com.cryptotool.util.MyStringUtils;
 import org.junit.Test;
 
 public class TestCoding {
@@ -9,8 +9,8 @@ public class TestCoding {
     public void testBase64(){
         byte[] data = "aaaaa".getBytes();
         //编码
-        byte[] base64 = MyBase64.encodeToArray(data);
-        byte[] dData = MyBase64.decodeFromArray(base64);
+        byte[] base64 = MyStringUtils.encodeToBase64Array(data);
+        byte[] dData = MyStringUtils.decodeFromBase64Array(base64);
         System.out.println(new String(dData));
     }
 

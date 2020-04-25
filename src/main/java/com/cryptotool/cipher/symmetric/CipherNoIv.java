@@ -52,7 +52,7 @@ public class CipherNoIv implements MyCipher {
      */
     @Override
     @NotNull
-    public byte[] encryptFile(@NotNull byte[] data) {
+    public byte[] encrypt(@NotNull byte[] data) {
         try {
             this.cipher.init(1,key);
             byte[] out = this.cipher.doFinal(data);
@@ -72,7 +72,7 @@ public class CipherNoIv implements MyCipher {
      */
     @Override
     @NotNull
-    public byte[] decryptFile(@NotNull byte[] data){
+    public byte[] decrypt(@NotNull byte[] data){
         try {
             this.cipher.init(2,key);
             byte[] out = this.cipher.doFinal(data);

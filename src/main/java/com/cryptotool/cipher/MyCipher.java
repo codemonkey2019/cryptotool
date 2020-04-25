@@ -12,7 +12,7 @@ public interface MyCipher {
      * @return 密文数据
      * @throws Exception
      */
-    byte[] encryptFile(byte[] data);
+    byte[] encrypt(byte[] data);
 
     /**
      * 解密算法
@@ -21,7 +21,7 @@ public interface MyCipher {
      * @return 密文数据
      * @throws Exception
      */
-    byte[] decryptFile(byte[] data);
+    byte[] decrypt(byte[] data);
 
     /**
      * 文件加密

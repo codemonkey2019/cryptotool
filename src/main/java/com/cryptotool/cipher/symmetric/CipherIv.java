@@ -57,7 +57,7 @@ public class CipherIv implements MyCipher {
      * @throws Exception
      */
     @Override
-    public byte[] encryptFile(@NotNull byte[] data){
+    public byte[] encrypt(@NotNull byte[] data){
 
         try {
             this.cipherForNoIv.init(1,key);
@@ -87,7 +87,7 @@ public class CipherIv implements MyCipher {
      * @throws Exception
      */
     @Override
-    public byte[] decryptFile(@NotNull byte[] data) {
+    public byte[] decrypt(@NotNull byte[] data) {
         try {
             this.cipherForNoIv.init(2,key);
             byte[] en_iv = new byte[cipherForIv.getBlockSize()];

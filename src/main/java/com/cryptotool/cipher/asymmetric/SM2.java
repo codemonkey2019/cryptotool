@@ -11,19 +11,19 @@ import org.bouncycastle.jcajce.provider.asymmetric.ec.BCECPublicKey;
 /**
  * 国密SM2算法的实现
  */
-public class SM2Cipher implements MyCipher {
+public class SM2 implements MyCipher {
     @Getter
     private BCECPublicKey publicKey;
     @Getter
     private BCECPrivateKey privateKey;
 
-    public SM2Cipher(byte[] privateKey, byte[] publicKey){
+    public SM2(byte[] privateKey, byte[] publicKey){
         this.privateKey= KeyUtils.toSM2PrivateKey(privateKey);
         this.publicKey= KeyUtils.toSM2PublicKey(publicKey);
     }
 
     @Override
-    public byte[] encryptFile(byte[] data){
+    public byte[] encrypt(byte[] data){
         if (publicKey == null) {
             throw new RuntimeException("公钥为空");
         }
@@ -38,7 +38,7 @@ public class SM2Cipher implements MyCipher {
     }
 
     @Override
-    public byte[] decryptFile(byte[] data){
+    public byte[] decrypt(byte[] data){
         if (privateKey == null) {
             throw new RuntimeException("私钥为空");
         }

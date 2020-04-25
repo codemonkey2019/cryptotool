@@ -28,7 +28,7 @@ public class AECipher implements MyCipher {
         this.cipher=javax.crypto.Cipher.getInstance(algorithm.toString(),"BC");
     }
     @Override
-    public byte[] encryptFile(byte[] data) {
+    public byte[] encrypt(byte[] data) {
         if (publicKey == null) {
             throw new RuntimeException("公钥为空");
         }
@@ -42,7 +42,7 @@ public class AECipher implements MyCipher {
     }
 
     @Override
-    public byte[] decryptFile(byte[] data){
+    public byte[] decrypt(byte[] data){
         if (privateKey == null) {
             throw new RuntimeException("私钥为空");
         }
