@@ -35,17 +35,17 @@ public class MyStringUtils {
      * 输出一个给定长度的随机字节序列
      * 最大支持512位，64字节
      *
-     * @param length 随机序列的字节长度 <=64字节
+     * @param bitLength 随机序列的比特长度 <=512，输入要是8的倍数
      * @return 随机字节数组
      */
-    public static byte[] getRandomByte(int length) {
-        if (length>64) {
-            throw new RuntimeException("长度超过64字节，512比特");
+    public static byte[] getRandomByte(int bitLength) {
+        if (bitLength>512||bitLength%8!=0) {
+            throw new RuntimeException("长度超过512比特,或输入不是8的倍数");
         }
         int i = random.nextInt();
         String s = v+i;
         byte[] hash = myDigest.getDigest(s.getBytes());
-        return Arrays.copyOf(hash,length);
+        return Arrays.copyOf(hash,bitLength/8);
     }
 
 }
