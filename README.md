@@ -10,7 +10,7 @@ byte[] key = KeyUtils.getSecretKey(SE.SM4);
 //从算法工厂中获取SM4加密的MyCipher实例，并指定工作模式，填充模式和密钥
 MyCipher cipher = MyCipherFactory.getSECipher(SE.SM4, Pattern.CBC, Padding.PKCS5,key);
 //准备一个数据
-byte[] data = "hello word".getBytes;
+byte[] data = "hello word".getBytes();
 //加密数据
 byte[] en_data = cipher.encrypt(data);
 //解密数据
@@ -86,7 +86,7 @@ byte[] dData = HexUtils.hexStringToBinary(hex);
 1. 获取一个Pairing对像
 
    ```java
-   Pairing pairing = PairingAUtils.getPairing();
+   Pairing pairing = PairingAUtils.getPairing();//获取一个A曲线的Pairing
    ```
 
 2. 可以直接获取域对象：G1、G2、Zr

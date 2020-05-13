@@ -1,5 +1,6 @@
 package test;
 
+import com.cryptotool.util.PairingA1Utils;
 import com.cryptotool.util.PairingAUtils;
 import it.unisa.dia.gas.jpbc.Element;
 import it.unisa.dia.gas.jpbc.Field;
@@ -33,10 +34,11 @@ public class TestPairing {
         Assert.assertTrue(true);
     }
     @Test
-    public void testElementLength(){
-        Element g = PairingAUtils.getRandomElementOfG1();
-        byte[] bytes = g.toBytes();
-        System.out.println(bytes.length*8);
-        System.out.println(g.getLengthInBytes()*8);
+    public void testE(){
+        Element g = PairingA1Utils.getRandomElementOfG1().getImmutable();
+        Element g1 = PairingA1Utils.getRandomElementOfG1().getImmutable();
+        Element t = PairingA1Utils.doPairing(g,g1);
+        System.out.println(t);
+        System.out.println(g.mulZn(t));
     }
 }

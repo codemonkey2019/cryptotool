@@ -46,4 +46,8 @@ public class PairingA1Utils {
     public static Element doPairingA1(Element e1,Element e2){
         return pairingA1.pairing(e1, e2);
     }
+
+    public static Element doPairing(Element g, Element g1) {
+        return pairingA1.pairing(g,g1);
+    }
 }
