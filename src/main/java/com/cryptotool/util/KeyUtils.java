@@ -49,6 +49,19 @@ public class KeyUtils {
         }
         return keyGenerator.generateKey().getEncoded();
     }
+    public static byte[] getSecretKeyBySeed(SE algo, byte[] seed) {
+        KeyGenerator keyGenerator = null;
+        SecureRandom secureRandom = new SecureRandom(seed);
+        try {
+            keyGenerator = KeyGenerator.getInstance(algo.toString(), "BC");
+            keyGenerator.init(secureRandom);
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (NoSuchProviderException e) {
+            e.printStackTrace();
+        }
+        return keyGenerator.generateKey().getEncoded();
+    }
 
 
     /**
@@ -70,6 +83,14 @@ public class KeyUtils {
      */
     private static AEKeyPair getSM2Key() {
         AsymmetricCipherKeyPair keyPair = SM2Util.generateKeyPairParameter();
+        ECPrivateKeyParameters priKey = (ECPrivateKeyParameters) keyPair.getPrivate();
+        ECPublicKeyParameters pubKey = (ECPublicKeyParameters) keyPair.getPublic();
+        byte[] priKeyPkcs8Der = BCECUtil.convertECPrivateKeyToPKCS8(priKey, pubKey);
+        byte[] pubKeyX509Der = BCECUtil.convertECPublicKeyToX509(pubKey);
+        return new AEKeyPair(priKeyPkcs8Der,pubKeyX509Der);
+    }
+    private static AEKeyPair getSM2KeyBySeed(byte[] seed) {
+        AsymmetricCipherKeyPair keyPair = SM2Util.generateKeyPairParameter(seed);
         ECPrivateKeyParameters priKey = (ECPrivateKeyParameters) keyPair.getPrivate();
         ECPublicKeyParameters pubKey = (ECPublicKeyParameters) keyPair.getPublic();
         byte[] priKeyPkcs8Der = BCECUtil.convertECPrivateKeyToPKCS8(priKey, pubKey);

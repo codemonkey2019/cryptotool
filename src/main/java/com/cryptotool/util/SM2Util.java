@@ -59,6 +59,10 @@ public class SM2Util extends GMBaseUtil {
         SecureRandom random = new SecureRandom();
         return BCECUtil.generateKeyPairParameter(DOMAIN_PARAMS, random);
     }
+    public static AsymmetricCipherKeyPair generateKeyPairParameter(byte[] seed) {
+        SecureRandom random = new SecureRandom(seed);
+        return BCECUtil.generateKeyPairParameter(DOMAIN_PARAMS, random);
+    }
 
     public static KeyPair generateKeyPair() throws NoSuchProviderException, NoSuchAlgorithmException,
         InvalidAlgorithmParameterException {

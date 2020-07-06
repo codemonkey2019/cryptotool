@@ -23,22 +23,31 @@ public class TestPairing {
         System.out.println();
         Element g1 = G1.newRandomElement();
         Element z = Z.newRandomElement();
-        Assert.assertTrue(g1.mulZn(z)!=null);
+        Assert.assertTrue(g1.mulZn(z) != null);
     }
 
     @Test
-    public void testPairiing(){
+    public void testPairiing() {
         Element g = PairingAUtils.getRandomElementOfG1();
         Element g1 = PairingAUtils.getRandomElementOfG1();
-        Element e = PairingAUtils.doPairing(g,g1);
+        Element e = PairingAUtils.doPairing(g, g1);
         Assert.assertTrue(true);
     }
+
     @Test
-    public void testE(){
+    public void testE() {
         Element g = PairingA1Utils.getRandomElementOfG1().getImmutable();
         Element g1 = PairingA1Utils.getRandomElementOfG1().getImmutable();
-        Element t = PairingA1Utils.doPairing(g,g1);
+        Element t = PairingA1Utils.doPairing(g, g1);
         System.out.println(t);
         System.out.println(g.mulZn(t));
+    }
+
+    @Test
+    public void testSize() {
+        Element z = PairingAUtils.getOneElementOfZr();
+        Element g = PairingAUtils.getOneElementOfG1();
+        System.out.println(z.getLengthInBytes() * 8);
+        System.out.println(g.getLengthInBytes() * 8);
     }
 }

@@ -112,7 +112,6 @@ public class CipherNoIv implements MyCipher {
                 e.printStackTrace();
             }
         }else {
-
             throw new RuntimeException("文件不存在");
         }
 
@@ -145,7 +144,6 @@ public class CipherNoIv implements MyCipher {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
         }else {
             throw new RuntimeException("文件不存在");
         }

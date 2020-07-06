@@ -1,7 +1,13 @@
 package test;
 
+import com.cryptotool.block.DIG;
+import com.cryptotool.digests.DigestFactory;
+import com.cryptotool.digests.MyDigest;
 import com.cryptotool.util.MyStringUtils;
+import com.cryptotool.util.PairingAUtils;
+import it.unisa.dia.gas.jpbc.Element;
 import org.junit.Test;
+
 
 public class TestEfficency {
     private  long n = 10000000;
@@ -32,6 +38,37 @@ public class TestEfficency {
 //        System.out.println((end-start)/(n+0.0)+"ms");
 //    }
 
+    @Test
+    public void testZr(){
+        Element z = PairingAUtils.getRandomElementOfZr();
+        Element a = PairingAUtils.getRandomElementOfZr();
+        long s = System.currentTimeMillis();
+        for (int i = 0; i < 1000; i++) {
+            z.powZn(a);
+        }
+        long e = System.currentTimeMillis();
+        System.out.println((e-s)/1000.0);
+    }  @Test
+    public void testG(){
+        Element z = PairingAUtils.getRandomElementOfG1();
+        Element a = PairingAUtils.getRandomElementOfZr();
+        long s = System.currentTimeMillis();
+        for (int i = 0; i < 1000; i++) {
+            z.powZn(a);
+        }
+        long e = System.currentTimeMillis();
+        System.out.println((e-s)/1000.0);
+    }
+    @Test
+    public void testHash(){
+        MyDigest digest = DigestFactory.getDigest(DIG.SM3);
+        long s = System.currentTimeMillis();
+        for (int i = 0; i < 1000; i++) {
+            digest.getDigest("helloword");
+        }
+        long e = System.currentTimeMillis();
+        System.out.println((e-s)/1000.0);
+    }
     @Test
     public void testR(){
         byte[] randomByte = MyStringUtils.getRandomByte(64);

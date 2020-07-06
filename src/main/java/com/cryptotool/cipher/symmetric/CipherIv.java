@@ -155,7 +155,6 @@ public class CipherIv implements MyCipher {
     public void decryptFile(@NotNull String inPath, @NotNull String outPath){
         File file = new File(inPath);
         if (file.exists()){
-
             try {
                 this.cipherForNoIv.init(2,key);
 
