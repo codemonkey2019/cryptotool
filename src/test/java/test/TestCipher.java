@@ -13,6 +13,8 @@ import com.cryptotool.cipher.asymmetric.AEKeyPair;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Arrays;
+
 public class TestCipher {
     @Test
     public void test0x(){
@@ -28,6 +30,14 @@ public class TestCipher {
         Assert.assertFalse(!"hello word".equals(new String(de_data)));
     }
 
+    @Test
+    public void testKeys(){
+        System.out.println(Arrays.toString(KeyUtils.getAEKeyPairBySeed(AE.SM2, "hello".getBytes()).getPrivateKey()));
+        System.out.println(Arrays.toString(KeyUtils.getAEKeyPairBySeed(AE.SM2, "hello".getBytes()).getPrivateKey()));
+        System.out.println(Arrays.toString(KeyUtils.getAEKeyPairBySeed(AE.RSA, "hello".getBytes()).getPrivateKey()));
+        System.out.println(Arrays.toString(KeyUtils.getAEKeyPairBySeed(AE.RSA, "hello".getBytes()).getPrivateKey()));
+
+    }
     @Test
     public void testSM4() throws Exception {
         byte[] key = KeyUtils.getSecretKey(SE.SM4);

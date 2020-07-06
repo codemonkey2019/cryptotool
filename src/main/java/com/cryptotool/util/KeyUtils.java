@@ -168,6 +168,26 @@ public class KeyUtils {
         }
         return null;
     }
+    private static AEKeyPair getKeyPairBySeed(String algo, byte[] seed){
+        if (algo.equals("SM2")){
+            return getSM2KeyBySeed(seed);
+        }
+        KeyPairGenerator generator = null;
+        SecureRandom secureRandom = new SecureRandom();
+        try {
+            generator = KeyPairGenerator.getInstance(algo);
+            generator.initialize(2048,secureRandom);
+            KeyPair keyPair = generator.generateKeyPair();
+
+            PublicKey publicKey = keyPair.getPublic();
+            PrivateKey privateKey = keyPair.getPrivate();
+
+            return new AEKeyPair(privateKey.getEncoded(),publicKey.getEncoded());
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     /**
      * 根据算法名枚举获取一个非对称加密的密钥对
@@ -176,6 +196,9 @@ public class KeyUtils {
      */
     public static AEKeyPair getAEKeyPair(AE algo) {
         return getKeyPair(algo.toString());
+    }
+    public static AEKeyPair getAEKeyPairBySeed(AE algo,byte[] seed) {
+        return getKeyPairBySeed(algo.toString(),seed);
     }
 
     /**
