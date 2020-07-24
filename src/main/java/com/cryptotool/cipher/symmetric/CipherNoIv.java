@@ -41,6 +41,7 @@ public class CipherNoIv implements MyCipher {
 
         this.key= KeyUtils.toSecretKey(algorithm,key);
         this.cipher = Cipher.getInstance(MyUtils.prase(algorithm, mode, padding));
+
     }
 
     /**
