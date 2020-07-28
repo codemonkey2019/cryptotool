@@ -1,5 +1,15 @@
 # cryptool工具包使用手册
 
+## 需要先在本地Maven仓库安装JPBC包(如果用不到双线性映射的工具类，也可以不装)
+
+1. 下载JPBC
+
+   https://sourceforge.net/projects/jpbc/files/jpbc_2_0_0/
+
+2. 安装到本地maven仓库，在根目录运行以下命令（运行出现ERROR也不影响，只需要它的jpbc-api和jpbc-plaf两个jar包，也可以单独把这里俩jar包安装到本地库）
+
+   mvn install -DskipTests 
+
 ## 支持的算法
 
 ## 1 对称加密算法（Symmetric Encryption (SE)）
