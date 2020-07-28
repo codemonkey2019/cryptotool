@@ -25,7 +25,7 @@ public class TestCipher {
 
         byte[] de_data = cipher.decrypt(HexUtils.hexStringToBinary(hex));
 
-        Assert.assertFalse(!"hello word".equals(new String(de_data)));
+        Assert.assertTrue("hello word".equals(new String(de_data)));
     }
 
     @Test
@@ -35,7 +35,7 @@ public class TestCipher {
         String data = "hello word";
         byte[] en_data = cipher.encrypt(data.getBytes());
         byte[] de_data = cipher.decrypt(en_data);
-        Assert.assertFalse(!"hello word".equals(new String(de_data)));
+        Assert.assertTrue("hello word".equals(new String(de_data)));
     }
     
     @Test
@@ -45,7 +45,7 @@ public class TestCipher {
         String data = "hello word";
         byte[] en_data = cipher.encrypt(data.getBytes());
         byte[] de_data = cipher.decrypt(en_data);
-        Assert.assertFalse(!"hello word".equals(new String(de_data)));
+        Assert.assertTrue("hello word".equals(new String(de_data)));
     }
     @Test
     public void testDES() throws Exception {
@@ -54,7 +54,7 @@ public class TestCipher {
         String data = "hello word";
         byte[] en_data = cipher.encrypt(data.getBytes());
         byte[] de_data = cipher.decrypt(en_data);
-        Assert.assertFalse(!"hello word".equals(new String(de_data)));
+        Assert.assertTrue("hello word".equals(new String(de_data)));
     }
 
     @Test
@@ -64,7 +64,7 @@ public class TestCipher {
         String data = "hello word";
         byte[] en_data = cipher.encrypt(data.getBytes());
         byte[] de_data = cipher.decrypt(en_data);
-        Assert.assertFalse(!"hello word".equals(new String(de_data)));
+        Assert.assertTrue("hello word".equals(new String(de_data)));
 
     }
 
@@ -75,7 +75,7 @@ public class TestCipher {
         String data = "hello word";
         byte[] en_data = cipher.encrypt(data.getBytes());
         byte[] de_data = cipher.decrypt(en_data);
-        Assert.assertFalse(!"hello word".equals(new String(de_data)));
+        Assert.assertTrue("hello word".equals(new String(de_data)));
 
     }
     @Test
@@ -85,7 +85,7 @@ public class TestCipher {
         String data = "hello word";
         byte[] en_data = cipher.encrypt(data.getBytes());
         byte[] de_data = cipher.decrypt(en_data);
-        Assert.assertFalse(!"hello word".equals(new String(de_data)));
+        Assert.assertTrue("hello word".equals(new String(de_data)));
 
     }
 }

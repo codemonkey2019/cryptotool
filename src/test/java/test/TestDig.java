@@ -13,7 +13,7 @@ public class TestDig {
         MyDigest digest = DigestFactory.getDigest(DIG.SM3);
         String d = digest.getDigest(str);
         String d1 = digest.getDigest(str);
-        Assert.assertFalse(!(d1.equals(d)));
+        Assert.assertTrue(d1.equals(d));
     }
     @Test
     public void testSHA256() throws Exception {
@@ -21,7 +21,7 @@ public class TestDig {
         MyDigest digest = DigestFactory.getDigest(DIG.SHA256);
         String d = digest.getDigest(str);
         String d1 = digest.getDigest(str);
-        Assert.assertFalse(!(d1.equals(d)));
+        Assert.assertTrue(d1.equals(d));
     }
     @Test
     public void testMD5() throws Exception {
@@ -29,6 +29,6 @@ public class TestDig {
         MyDigest digest = DigestFactory.getDigest(DIG.MD5);
         String d = digest.getDigest(str);
         String d1 = digest.getDigest(str);
-        Assert.assertFalse(!(d1.equals(d)));
+        Assert.assertTrue(d1.equals(d));
     }
 }

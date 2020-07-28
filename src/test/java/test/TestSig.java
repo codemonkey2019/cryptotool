@@ -21,7 +21,7 @@ public class TestSig {
         MySignature signature = SignatureFactory.getSignature(SIG.SHA1WITHDSA, keyPair.getPrivateKey(), keyPair.getPublicKey());
         byte[] data = "hello word".getBytes();
         byte[] sign = signature.sign(data);
-        Assert.assertFalse(!signature.verify(data, sign));
+        Assert.assertTrue(signature.verify(data, sign));
     }
     @Test
     public void testSigRSA(){
@@ -29,7 +29,7 @@ public class TestSig {
         MySignature signature = SignatureFactory.getSignature(SIG.SHA256WITHRSA, keyPair.getPrivateKey(), keyPair.getPublicKey());
         byte[] data = "hello word".getBytes();
         byte[] sign = signature.sign(data);
-        Assert.assertFalse(!signature.verify(data, sign));
+        Assert.assertTrue(signature.verify(data, sign));
     }
     @Test
     public void testSigSM2(){
@@ -37,6 +37,6 @@ public class TestSig {
         MySignature signature = SignatureFactory.getSignature(SIG.NONEWITHSM2, keyPair.getPrivateKey(), keyPair.getPublicKey());
         byte[] data = "hello word".getBytes();
         byte[] sign = signature.sign(data);
-        Assert.assertFalse(!signature.verify(data, sign));
+        Assert.assertTrue(signature.verify(data, sign));
     }
 }
