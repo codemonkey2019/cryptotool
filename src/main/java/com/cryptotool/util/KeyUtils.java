@@ -210,6 +210,10 @@ public class KeyUtils {
         AEKeyPair keyPair = getKeyPair(MyUtils.fetch(algo));
         return new SigKeyPair(keyPair.getPrivateKey(),keyPair.getPublicKey());
     }
+    public static SigKeyPair getSigKeyPairBySeed(SIG algo, byte[] seed) {
+        AEKeyPair keyPair = getKeyPairBySeed(MyUtils.fetch(algo),seed);
+        return new SigKeyPair(keyPair.getPrivateKey(),keyPair.getPublicKey());
+    }
 
     /**
      * 转换除SM2外其他算法的公钥位标准形式

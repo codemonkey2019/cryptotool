@@ -1,8 +1,38 @@
 # cryptool工具包使用手册
 
+## 支持的算法
+
+## 1 对称加密算法（Symmetric Encryption (SE)）
+
+![image-20200728190232607](C:\Users\Zhong\AppData\Roaming\Typora\typora-user-images\image-20200728190232607.png)
+
+## 2 非对称加密算法（Asymmetric Ancryption （AE））
+
+![image-20200728190331417](C:\Users\Zhong\AppData\Roaming\Typora\typora-user-images\image-20200728190331417.png)
+
+## 3 哈希函数（Hash/Digest）
+
+![image-20200728190439734](C:\Users\Zhong\AppData\Roaming\Typora\typora-user-images\image-20200728190439734.png)
+
+## 4 数字签名算法(Digital  Signature)
+
+![image-20200728190540643](C:\Users\Zhong\AppData\Roaming\Typora\typora-user-images\image-20200728190540643.png)
+
+注：其名称对应的意思，如 SHA256WITHRSA : 使用SHA256对消息做哈希，然后用RSA对哈希值签名（即先哈希再签名）
+
+## 支持的对称加密算法的工作模式和填充模式
+
+工作模式：常用ECB、CBC
+
+![image-20200728190921326](C:\Users\Zhong\AppData\Roaming\Typora\typora-user-images\image-20200728190921326.png)
+
+填充模式：常用PKCS5
+
+![image-20200728190937816](C:\Users\Zhong\AppData\Roaming\Typora\typora-user-images\image-20200728190937816.png)
+
 ## 快速开始
 
-### 1.1 对称加密算法的实现（SM4算法举例）
+## 1.1 对称加密算法的实现（SM4算法举例）
 
 ```java
 //随机获取一个密钥字节数组
@@ -112,4 +142,31 @@ byte[] dData = HexUtils.hexStringToBinary(hex);
    Element e = PairingAUtils.doPairing(g,g1);
    ```
 
-   
+
+## 1.8 如何获取指定算法的密钥
+
+## 使用KeyUtils类获取密钥
+
+1. 随机生成密钥
+
+```java
+//指定对称加密算法，随机生成其对称密钥字节数组
+byte[] key = KeyUtils.getSecretKey(SE.SM4);
+//指定非对称加密算法，随机生成其公钥对
+AEKeyPair key = KeyUtils.getAEKeyPair(AE.SM2);
+//指定非对称加密算法，随机生成其的公钥对
+SigKeyPair keyPair = KeyUtils.getSigKeyPair(SIG.NONEWITHSM2);
+```
+
+2. 由给定的随机数种子生成固定密钥：给定同一个seed就生成同一个密钥
+
+```java
+byte[] seed = "seed".getBytes();
+//指定对称加密算法，随机生成其对称密钥字节数组
+byte[] key = KeyUtils.getSecretKeyBySeed(SE.SM4,seed);
+//指定非对称加密算法，随机生成其公钥对
+AEKeyPair key = KeyUtils.getAEKeyPairBySeed(AE.SM2,seed);
+//指定非对称加密算法，随机生成其的公钥对
+SigKeyPair keyPair = KeyUtils.getSigKeyPairBySeed(SIG.NONEWITHSM2,seed);
+```
+
