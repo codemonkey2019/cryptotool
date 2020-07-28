@@ -14,19 +14,49 @@
 
 ## 1 对称加密算法（Symmetric Encryption (SE)）
 
-![image-20200728190232607](C:\Users\Zhong\AppData\Roaming\Typora\typora-user-images\image-20200728190232607.png)
+```java
+public enum SE {
+
+    AES("AES"),
+    DES("DES"),
+    SM4("SM4");
+```
+
+
 
 ## 2 非对称加密算法（Asymmetric Ancryption （AE））
 
-![image-20200728190331417](C:\Users\Zhong\AppData\Roaming\Typora\typora-user-images\image-20200728190331417.png)
+```java
+public enum AE {
+    SM2("SM2"),
+    ELGAMAL("ElGamal"),
+    RSA("RSA");
+```
+
+
 
 ## 3 哈希函数（Hash/Digest）
 
-![image-20200728190439734](C:\Users\Zhong\AppData\Roaming\Typora\typora-user-images\image-20200728190439734.png)
+```java
+public enum DIG {
+    SM3("SM3"),
+    SHA1("SHA-1"),
+    SHA256("SHA-256"),
+    SHA512("SHA-512"),
+    MD2("MD2"),
+    MD5("MD5");
+```
 
 ## 4 数字签名算法(Digital  Signature)
 
-![image-20200728190540643](C:\Users\Zhong\AppData\Roaming\Typora\typora-user-images\image-20200728190540643.png)
+```java
+public enum SIG {
+    NONEWITHRSA("NONEwithRSA"),
+    SHA256WITHRSA("SHA256withRSA"),
+    SHA512WITHRSA("SHA512withRSA"),
+    SHA1WITHDSA("SHA1withDSA"),
+    NONEWITHSM2("NONEWITHSM2");
+```
 
 注：其名称对应的意思，如 SHA256WITHRSA : 使用SHA256对消息做哈希，然后用RSA对哈希值签名（即先哈希再签名）
 
@@ -34,11 +64,27 @@
 
 工作模式：常用ECB、CBC
 
-![image-20200728190921326](C:\Users\Zhong\AppData\Roaming\Typora\typora-user-images\image-20200728190921326.png)
+```java
+public enum Pattern {
+    ECB("ECB"),
+    CBC("CBC"),
+    CTR("CTR"),
+    CFB("CFB");
+```
 
 填充模式：常用PKCS5
 
-![image-20200728190937816](C:\Users\Zhong\AppData\Roaming\Typora\typora-user-images\image-20200728190937816.png)
+```java
+public enum Padding {
+    NoPadding("NoPadding"),
+    PKCS5("PKCS5Padding"), PKCS7("PKCS7Padding"),
+    ISO10126("ISO10126Padding"), ISO10126_2("ISO10126-2Padding"),
+    ISO7816_4("ISO7816-4Padding"), ISO9797_1("ISO9797-1Padding"),
+    X923("X923Padding"), X9_23("X9.23Padding"),
+    TBC("TBCPadding"),
+    ZeroByte("ZeroBytePadding"),
+    WithCTS("WithCTS");
+```
 
 ## 快速开始
 
