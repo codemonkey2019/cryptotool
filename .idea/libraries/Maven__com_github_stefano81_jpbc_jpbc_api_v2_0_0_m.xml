@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.github.stefano81.jpbc:jpbc-api:v2.0.0-m">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/stefano81/jpbc/jpbc-api/v2.0.0-m/jpbc-api-v2.0.0-m.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/stefano81/jpbc/jpbc-api/v2.0.0-m/jpbc-api-v2.0.0-m-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/stefano81/jpbc/jpbc-api/v2.0.0-m/jpbc-api-v2.0.0-m-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

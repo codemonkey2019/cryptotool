@@ -1,14 +1,32 @@
 # cryptool工具包使用手册
 
-## 需要先在本地Maven仓库安装JPBC包(如果用不到双线性映射的工具类，也可以不装，也可以直接以导包的方式使用)
+## 安装：
 
-1. 下载JPBC
+> 方式一：
 
-   https://sourceforge.net/projects/jpbc/files/jpbc_2_0_0/
+直接下载到本地 mvn install
 
-2. 安装到本地maven仓库，在根目录运行以下命令（运行出现ERROR也不影响，只需要它的jpbc-api和jpbc-plaf两个jar包，也可以单独把这里俩jar包安装到本地库）
+> 方式二：
 
-   mvn install -DskipTests 
+使用jitpack，添加如下内容到你的pom文件中
+
+```xml
+<repositories>
+    <repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </repository>
+</repositories>
+<dependencies>
+    <dependency>
+        <groupId>com.github.codemonkey2019</groupId>
+        <artifactId>cryptotool</artifactId>
+        <version>7c823581af</version>
+    </dependency>
+</dependencies>
+```
+
+
 
 ## 支持的算法
 
