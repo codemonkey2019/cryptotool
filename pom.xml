@@ -14,21 +14,24 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
-
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
     <dependencies>
-
         <dependency>
-            <groupId>it.unisa.dia.gas</groupId>
-            <artifactId>jpbc-api</artifactId>
-            <version>2.0.0</version>
+            <groupId>com.github.stefano81</groupId>
+            <artifactId>jpbc</artifactId>
+            <version>v2.0.0-m</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.bouncycastle</groupId>
+                    <artifactId>bcprov-jdk16</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
-         <dependency>
-            <groupId>it.unisa.dia.gas</groupId>
-            <artifactId>jpbc-plaf</artifactId>
-            <version>2.0.0</version>
-        </dependency>
-
-
         <dependency>
             <groupId>org.bouncycastle</groupId>
             <artifactId>bcprov-jdk15on</artifactId>
