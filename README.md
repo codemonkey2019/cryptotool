@@ -169,9 +169,9 @@ boolean b = signature.verify(data, sign);
 ```java
 byte[] data = "aaaaa".getBytes();
 //编码
-byte[] base64 = MyBase64.encodeToArray(data);
+byte[] base64 = MyStringUtils.encodeToBase64Array(data);
 //解码
-byte[] dData = MyBase64.decodeFromArray(base64);
+byte[] dData = MyStringUtils.decodeFromBase64Array(base64);
 System.out.println(new String(dData));
 ```
 
